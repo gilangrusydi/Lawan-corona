@@ -1,0 +1,174 @@
+/* Global Style */
+*{
+    margin:0;
+    padding:0;
+    outline: none;
+    user-select: none;
+    box-sizing: border-box;
+    font-family: "Helvetica", sans-serif;
+}
+
+html,body{
+    background: #f1f1f1;
+}
+
+/* Middle Container */
+.container{
+    width:45vw;
+    height: 70vh;
+    position: absolute;
+    top:50%;
+    left:50%;
+    transform: translate(-50%,-50%);
+    background:#fff;
+    border-radius: 3px;
+    box-shadow: 0 0 15px 1px rgba(0,0,0,0.1);
+    overflow: hidden;
+}
+
+
+/* Global button */
+button{
+    width: 100px;
+    padding:5px 15px;
+    margin:15px 0;
+    background: #0d1a2b;
+    border:none;
+    color:#fff;
+    border-radius: 2px;
+    cursor: pointer;
+}
+
+button:hover{
+    opacity: .9;
+}
+
+p{
+    font-size: 1.3em;
+}
+
+/* Every section page in container */
+#intro,
+#gameboard{
+    width: 100%;
+    height: 100%;
+    display: none;
+}
+#over{
+    display: none;
+}
+
+/* Intro */
+#intro.active{
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+}
+
+/* Gameboard*/
+#gameboard.active{
+    display: grid;
+    grid-template-columns: repeat(5,1fr);
+    grid-template-rows: repeat(5, 1fr);
+}
+
+/* Blur effect */
+#gameboard.blur{
+    opacity: .2;
+}
+
+/* Cell in board */
+.cell{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    border:1px solid purple;
+    cursor: pointer;
+    transition: .2s;
+}
+
+/* Mark player */
+.cell.player{
+    background-image:url('images/player.png');
+    background-size: 100% 100%;
+    background-repeat: no-repeat;
+}
+
+/* Mark enemy */
+.cell.enemy{
+    background-image: url('images/opponent.png');
+    background-size: 100% 100%;
+    background-repeat: no-repeat;
+}
+
+/* Mark Color for winner */
+.cell.mark-winner{
+    background-color: lightsalmon;
+}
+
+/* Cell Filled */
+.cell[filled]{
+    cursor: not-allowed;
+}
+
+/* Borders */
+
+.cell:nth-child(1),
+.cell:nth-child(2),
+.cell:nth-child(3),
+.cell:nth-child(4),
+.cell:nth-child(5){
+    border-top: none;
+}
+
+.cell:nth-child(21),
+.cell:nth-child(22),
+.cell:nth-child(23),
+.cell:nth-child(24),
+.cell:nth-child(25){
+    border-bottom: none;
+}
+
+.cell:nth-child(5),
+.cell:nth-child(10),
+.cell:nth-child(15),
+.cell:nth-child(20),
+.cell:nth-child(25)
+{
+    border-right:none;
+}
+
+.cell:nth-child(1),
+.cell:nth-child(6),
+.cell:nth-child(11),
+.cell:nth-child(16),
+.cell:nth-child(21)
+{
+    border-left: none;
+}
+
+
+/* Winner */
+#over.active{
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    position: absolute;
+    top:-100px;
+    left:50%;
+    transform: translate(-50%, -50%);
+    width: 300px;
+    padding:20px 0;
+    background:#ddd;
+    border-radius: 3px;
+    text-align: center;
+    transition: .3s;
+    z-index: 99;
+}
+
+/* Effect fade animation */
+#over.active.fade{
+    top:50%;
+}
